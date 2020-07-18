@@ -3,3 +3,6 @@
 
 ## test page
 https://ovenapp.io/view/DEzNS4XjgQiphjgQ9VEhxSONuBVpraFW/KJt5Y
+
+## make page
+https://dongho108.github.io/Individualization_StudyMaterials/.
