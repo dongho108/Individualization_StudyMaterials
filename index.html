@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <title>combine_materials</title>
+  <meta charset="utf-8">
+</head>
+<style>
+.menu{
+  position: relative;
+  right : 3px;
+  top:5px;
+  width:15px;
+}
+h1{
+  text-align: center;
+}
+.divide{
+  float:left;
+  width:70%;
+}
+.result_form{
+  background-color: rgb(230, 230, 230);
+  float:left;
+  text-align: center;
+  width : 200px;
+  padding: 5px 5px 3px 5px;
+}
+.materials{
+  float:left;
+  width: 15%;
+  margin : 0px 20px 10px 10px;
+}
+.grade{
+  float:left;
+  width: 15%;
+}
+.year{
+  float:left;
+  width: 15%;
+}
+.month{
+  float:left;
+  width: 20%;
+}
+.type{
+  float:left;
+  width: 20%;
+}
+.select{
+  float:left;
+  width:100%;
+  text-align: center;
+  padding : 50px 0 0 0;
+}
+.select_btn{
+  padding : 10px 50px 10px 50px;
+
+}
+.download_btn{
+  padding : 5px 10px 5px 10px;
+  background-color: #0024FF;
+  border : none;
+  color : white;
+}
+.file_table{
+  margin-top:10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 0.7em;
+}
+@media only all and (max-width : 800px){
+  .divide{
+    width:100%;
+  }
+  .materials{
+    width:10%;
+  }
+  .grade{
+    width:20%;
+  }
+  .year{
+    width:20%;
+  }
+  .month{
+    width:20%;
+  }
+  .type{
+    width:20%;
+  }
+  .select{
+    width:100%;
+  }
+  .result_form{
+    width: 200px;
+    margin-left: 30%;
+  }
+}
+</style>
+<body>
+
+  <div style="text-align: right; font-size : 0.5em;">
+    <a href="index.html"><img src="image/menual.png" class = "menu">사용법</a>
+    <a href="index.html"><img src="image/notice.png" class = "menu">공지</a>
+    <a href="index.html"><img src="image/login.png" class = "menu">홈화면 </a>
+    <a href="login.html"><img src="image/create.png" class = "menu">회원가입</a>
+  </div>
+  <h1>교재만들기</h1>
+  <div class="select_form">
+    <div class="divide">
+      <select name='materials' class = "materials">
+        <option value='' selected> 교재 구분 </option>
+        <option value='textbook'>교과서</option>
+        <option value='simul'>모의고사</option>
+      </select>
+      <div class="grade">
+        학년 선택 </br>
+        <input type="checkbox"> 1학년 </br>
+        <input type="checkbox"> 2학년 </br>
+        <input type="checkbox"> 3학년</br>
+      </div>
+      <div class="year">
+        연도 선택 </br>
+        <input type="checkbox"> 2019</br>
+        <input type="checkbox"> 2020</br>
+
+      </div>
+      <div class="month">
+        *</br>
+        <input type="checkbox"> 3월</br>
+        <input type="checkbox"> 6월</br>
+        <input type="checkbox"> 9월</br>
+        <input type="checkbox"> 11월 & 수능</br>
+        <input type="checkbox"> 수능특강</br>
+        <input type="checkbox"> 수능완성</br>
+        <input type="checkbox"> 영독연</br>
+      </div>
+      <div class="type">
+        교재 유형 선택</br>
+        <input type="checkbox"> 손필기</br>
+        <input type="checkbox"> 워크북</br>
+        <input type="checkbox"> 변형문제</br>
+        <input type="checkbox"> 워크북</br>
+      </div>
+      <div class="select">
+        <input type="button" value="선택완료" class="select_btn">
+      </div>
+    </div>
+
+    <div class="result_form">
+      선택내역
+      <div class="file_form">
+        <table border="1" class="file_table">
+	        <th>순서</th>
+        	<th>합칠 파일</th>
+        	<tr><!-- 첫번째 줄 시작 -->
+        	    <td>1</td>
+        	    <td>모의고사-1학년-6월-손필기</td>
+        	</tr><!-- 첫번째 줄 끝 -->
+        	<tr><!-- 두번째 줄 시작 -->
+        	    <td>2</td>
+        	    <td>모의고사-1학년-6월-손필기</td>
+        	</tr><!-- 두번째 줄 끝 -->
+            </table>
+      </div>
+      <div class="download">
+        <input type="button" value="다운로드" class="download_btn">
+      </div>
+  </div>
+
+  </div>
+</body>
+</html>
