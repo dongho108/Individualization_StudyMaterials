@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>combine_materials</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta charset="utf-8">
 </head>
 <style>
@@ -70,11 +71,32 @@ h1{
   padding : 10px 50px 10px 50px;
 
 }
+.download_remove{
+  margin-left: 20%;
+
+}
+.download{
+  float : left;
+  margin-right: 5px;
+}
+.remove{
+  float : left;
+}
 .download_btn{
   padding : 5px 10px 5px 10px;
   background-color: #0024FF;
   border : none;
   color : white;
+  width : 60px;
+  font-size: 0.7em;
+}
+.remove_btn{
+  padding : 5px 10px 5px 10px;
+  background-color: gray;
+  border : none;
+  color : white;
+  width : 60px;
+  font-size: 0.7em;
 }
 #file_table{
   margin-top:10px;
@@ -142,14 +164,18 @@ h1{
       function display_select_value(select_obj){
         var selected_index = select_obj.selectedIndex;
         var selected_value = select_obj.options[selected_index].value;
+
+        //교과서 선택
         if(selected_value === "textbook"){
           display_on("textbook");
           display_off("simul");
         }
+        //모의고사 선택
         else if(selected_value === "simul"){
           display_on("simul");
           display_off("textbook");
         }
+        //미선
         else{
           display_off("simul");
           display_off("textbook");
@@ -160,25 +186,25 @@ h1{
       <div id="textbook">
         <div class="publisher">
           출판사 </br>
-          <input type="checkbox"> 능률 </br>
-          <input type="checkbox"> 비상 </br>
+          <input type="checkbox" class="publisher_list" value="능률"> 능률 </br>
+          <input type="checkbox" class="publisher_list" value="비상"> 비상 </br>
         </div>
         <div class="textbook_type">
           교재 종류 </br>
-          <input type="checkbox"> 영어 </br>
-          <input type="checkbox"> 영어1 </br>
-          <input type="checkbox"> 영어2 </br>
-          <input type="checkbox"> 실용 영어 </br>
+          <input type="checkbox" class="textbook_type_list" value="영어"> 영어 </br>
+          <input type="checkbox" class="textbook_type_list" value="영어1"> 영어1 </br>
+          <input type="checkbox" class="textbook_type_list" value="영어2"> 영어2 </br>
+          <input type="checkbox" class="textbook_type_list" value="실용 영어"> 실용 영어 </br>
         </div>
         <div class="type">
           교재 유형 선택</br>
-          <input type="checkbox"> 손필기</br>
-          <input type="checkbox"> 워크북</br>
-          <input type="checkbox"> 변형문제</br>
-          <input type="checkbox"> 워크북</br>
+          <input type="checkbox" class="type_list" value="손필기"> 손필기</br>
+          <input type="checkbox" class="type_list" value="워크북"> 워크북</br>
+          <input type="checkbox" class="type_list" value="변형문제"> 변형문제</br>
+          <input type="checkbox" class="type_list" value="유의어"> 유의어</br>
         </div>
         <div class="select">
-          <input type="button" value="선택완료" class="select_btn" onclick="add_download_list()">
+          <input type="button" value="선택완료" class="select_btn" onclick="add_download_textbook()">
         </div>
       </div>
       <div id="simul">
@@ -212,7 +238,7 @@ h1{
           <input type="checkbox" class="type_list" value="유의어"> 유의어</br>
         </div>
         <div class="select">
-          <input type="button" value="선택완료" class="select_btn" onclick="add_download()">
+          <input type="button" value="선택완료" class="select_btn" onclick="add_download_simul()">
         </div>
 
       </div>
@@ -225,15 +251,41 @@ h1{
         <table border="1" id="file_table">
 	        <th>순서</th>
         	<th>합칠 파일</th>
+          <th>선택</th>
 
         </table>
       </div>
-      <div class="download">
-        <input type="button" value="다운로드" class="download_btn">
+      <div class="download_remove">
+        <div class="download">
+          <input type="button" value="다운로드" class="download_btn">
+        </div>
+        <div class="remove">
+          <input type="button" value="선택삭제" class="remove_btn" onclick="remove_download()">
+        </div>
       </div>
+
   </div>
   <script>
     var index_file = 1;
+
+
+    function refresh_order(){
+      var check_count = document.getElementsByClassName("file_order").length;
+
+      for(var i=0; i<check_count; i++){
+        document.getElementsByClassName("file_order")[i].textContent = i+1;
+      }
+
+
+    }
+    function remove_download(){
+      var check_count = document.getElementsByClassName("checked_file_list").length;
+      $(".checked_file_list").remove();
+      index_file = index_file - check_count;
+      refresh_order();
+    }
+
+
 
     function add_download_list(name, newTR, td){
       var check_count = document.getElementsByClassName(name).length;
@@ -245,76 +297,53 @@ h1{
         }
       }
     }
-    function add_download(){
+    var newTR;
+    var td="";
 
-      var newTR;
-      var td="";
+    function handdle_checkbox_change(checkNode){
+
+      var childNode = checkNode.parentElement;//td
+      var targetNode = childNode.parentElement;//tr
+      var parent = targetNode.parentElement;//table
+
+
+      if(checkNode.checked === true)
+        targetNode.setAttribute("class", "checked_file_list");
+      else{
+        targetNode.setAttribute("class", "not_checked_file_list");
+      }
+    }
+
+    function add_download(){
+      newTR.innerHTML = `<td class="file_order">${index_file}</td> <td>${td}</td> <td><input type="checkbox" onchange="handdle_checkbox_change(this);" class="download_file_list" /></td>`;
+      var p = document.getElementById("file_table");
+      p.appendChild(newTR);
+      index_file++;
+    }
+
+    function add_download_textbook(){
+      newTR = document.createElement("tr");
+      td = `${td}${add_download_list("publisher_list", newTR, td)}`;
+      td = `${td}-${add_download_list("textbook_type_list", newTR, td)}`;
+      td = `${td}-${add_download_list("type_list", newTR, td)}`;
+
+      add_download();
+      td="";
+
+    }
+
+    function add_download_simul(){
+
       newTR = document.createElement("tr");
       td = `${td}${add_download_list("grade_list", newTR, td)}`;
       td = `${td}-${add_download_list("year_list", newTR, td)}`;
       td = `${td}-${add_download_list("month_list", newTR, td)}`;
       td = `${td}-${add_download_list("type_list", newTR, td)}`;
 
-      newTR.innerHTML = `<td>${index_file}</td> <td>${td}</td>`;
-      var p = document.getElementById("file_table");
-      p.appendChild(newTR);
-      index_file++;
-      // var check_count = document.getElementsByClassName("grade_list").length;
-      //
-      //
-      // for(var i=0; i<check_count; i++){
-      //   if(document.getElementsByClassName("grade_list")[i].checked === true){
-      //     // alert(document.getElementsByName("grade_list")[i].value);
-      //
-      //     newTR = document.createElement("tr");
-      //
-      //     var tem_td = document.getElementsByClassName("grade_list")[i].value;
-      //
-      //     td = `${td}${tem_td}`;
-      //   }
-      // }
 
-      // check_count =
-      // document.getElementsByClassName("year_list").length;
-      // for(var i=0; i<check_count; i++){
-      //   if(document.getElementsByClassName("year_list")[i].checked === true){
-      //     // alert(document.getElementsByName("grade_list")[i].value);
-      //
-      //     newTR = document.createElement("tr");
-      //
-      //     var tem_td = document.getElementsByClassName("year_list")[i].value;
-      //
-      //     td = `${td}-${tem_td}`;
-      //   }
-      // }
-      //
-      // check_count =
-      // document.getElementsByClassName("month_list").length;
-      // for(var i=0; i<check_count; i++){
-      //   if(document.getElementsByClassName("month_list")[i].checked === true){
-      //     // alert(document.getElementsByName("grade_list")[i].value);
-      //
-      //     newTR = document.createElement("tr");
-      //
-      //     var tem_td = document.getElementsByClassName("month_list")[i].value;
-      //
-      //     td = `${td}-${tem_td}`;
-      //
-      //   }
-      // }
-      // check_count =
-      // document.getElementsByClassName("type_list").length;
-      // for(var i=0; i<check_count; i++){
-      //   if(document.getElementsByClassName("type_list")[i].checked === true){
-      //     // alert(document.getElementsByName("grade_list")[i].value);
-      //
-      //     newTR = document.createElement("tr");
-      //
-      //     var tem_td = document.getElementsByClassName("type_list")[i].value;
-      //
-      //     td = `${td}-${tem_td}`;
-      //   }
-      // }
+      add_download();
+      td="";
+
 
     }
   </script>
