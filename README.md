@@ -1,5 +1,5 @@
-# Individualization_StudyMaterials
-교재 개별화 프로젝트
+# making_StudyMaterials
+교재 만드는 웹 제작 프로젝트
 
 ## test page
 https://ovenapp.io/view/DEzNS4XjgQiphjgQ9VEhxSONuBVpraFW/KJt5Y
