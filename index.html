@@ -34,32 +34,40 @@ h1{
 }
 .materials{
   float:left;
-  width: 15%;
+  width: 94px;
   margin : 0px 20px 10px 10px;
 }
 .grade{
   float:left;
-  width: 15%;
+  width: 94px;
+  margin-right: 3%;
 }
 .year{
   float:left;
-  width: 15%;
+  width: 94px;
+  margin-right: 3%;
 }
 .month{
   float:left;
-  width: 20%;
+  width: 94px;
+  margin-right: 3%;
 }
 .type{
   float:left;
-  width: 20%;
+  width: 94px;
 }
 .publisher{
   float:left;
-  width: 20%;
+  width: 94px;
+  margin-right: 3%;
 }
 .textbook_type{
   float:left;
-  width: 20%;
+  width: 94px;
+  margin-right: 3%;
+}
+.textbox{
+  color : blue;
 }
 .select{
   float:left;
@@ -111,19 +119,19 @@ h1{
     width:100%;
   }
   .materials{
-    width:10%;
+    width: 80px;
   }
   .grade{
-    width:20%;
+    width: 80px;
   }
   .year{
-    width:20%;
+    width: 80px;
   }
   .month{
-    width:20%;
+    width: 94px;
   }
   .type{
-    width:20%;
+    width: 94px;
   }
   .select{
     width:100%;
@@ -184,20 +192,33 @@ h1{
       };
       </script>
       <div id="textbook">
-        <div class="publisher">
+        <select id="publisher" name='publisher' class = "publisher">
+          <option value='' selected> 출판사 </option>
+          <option value='능률' class="publisher_list">능률</option>
+          <option value='비상' class="publisher_list">비상</option>
+
+        </select>
+        <!-- <div class="publisher">
           출판사 </br>
           <input type="checkbox" class="publisher_list" value="능률"> 능률 </br>
           <input type="checkbox" class="publisher_list" value="비상"> 비상 </br>
-        </div>
-        <div class="textbook_type">
+        </div> -->
+        <select id="textbook_type" name='textbook_type' class = "textbook_type">
+          <option value='' selected> 교재종류 </option>
+          <option value='영어' class="textbook_type_list">영어</option>
+          <option value='영어1' class="textbook_type_list">영어1</option>
+          <option value='영어2' class="textbook_type_list">영어2</option>
+          <option value='실용영어' class="textbook_type_list">실용영어</option>
+        </select>
+        <!-- <div class="textbook_type">
           교재 종류 </br>
           <input type="checkbox" class="textbook_type_list" value="영어"> 영어 </br>
           <input type="checkbox" class="textbook_type_list" value="영어1"> 영어1 </br>
           <input type="checkbox" class="textbook_type_list" value="영어2"> 영어2 </br>
           <input type="checkbox" class="textbook_type_list" value="실용 영어"> 실용 영어 </br>
-        </div>
+        </div> -->
         <div class="type">
-          교재 유형 선택</br>
+          <span class="textbox">교재 유형 선택</br></span>
           <input type="checkbox" class="type_list" value="손필기"> 손필기</br>
           <input type="checkbox" class="type_list" value="워크북"> 워크북</br>
           <input type="checkbox" class="type_list" value="변형문제"> 변형문제</br>
@@ -208,19 +229,40 @@ h1{
         </div>
       </div>
       <div id="simul">
-        <div class="grade">
+        <select id = "grade" name='grade' class = "grade">
+          <option value='' selected> 학년 선택 </option>
+          <option value='1학년' class="grade_list">1학년</option>
+          <option value='2학년' class="grade_list">2학년</option>
+          <option value='3학년' class="grade_list">3학년</option>
+        </select>
+        <!-- <div class="grade">
           학년 선택 </br>
           <input type="checkbox" class="grade_list" value="1학년"> <span>1학년</br></span>
           <input type="checkbox" class="grade_list" value="2학년"> <span>2학년</br></span>
           <input type="checkbox" class="grade_list" value="3학년"> <span>3학년</br></span>
-        </div>
-        <div class="year">
+        </div> -->
+        <select id="year" name='year' class = "year">
+          <option value='' selected> 연도 선택 </option>
+          <option value='2019' class="year_list">2019</option>
+          <option value='2020' class="year_list">2020</option>
+        </select>
+        <!-- <div class="year">
           연도 선택 </br>
           <input type="checkbox" class="year_list" value="2019"> 2019</br>
           <input type="checkbox" class="year_list" value="2020"> 2020</br>
 
-        </div>
-        <div class="month">
+        </div> -->
+        <select id="month" name='month' class = "month">
+          <option value='' selected> 시기 </option>
+          <option value='3월' class="month_list">3월</option>
+          <option value='6월' class="month_list">6월</option>
+          <option value='9월' class="month_list">9월</option>
+          <option value='11월 & 수능' class="month_list">11월 & 수능</option>
+          <option value='수능특강' class="month_list">수능특강</option>
+          <option value='수능완성' class="month_list">수능완성</option>
+          <option value='영독연' class="month_list">영독연</option>
+        </select>
+        <!-- <div class="month">
           *</br>
           <input type="checkbox" class="month_list" value="3월"> 3월</br>
           <input type="checkbox" class="month_list" value="6월"> 6월</br>
@@ -229,9 +271,16 @@ h1{
           <input type="checkbox" class="month_list" value="수능특강"> 수능특강</br>
           <input type="checkbox" class="month_list" value="수능완성"> 수능완성</br>
           <input type="checkbox" class="month_list" value="영독 "> 영독연</br>
-        </div>
+        </div> -->
+        <!-- <select name='type' class = "type">
+          <option value='' selected> 교재 유형 선택 </option>
+          <option value='손필기' class="type_list">손필기</option>
+          <option value='워크북' class="type_list">워크북</option>
+          <option value='변형문제' class="type_list">변형문제</option>
+          <option value='유의어' class="type_list">유의어</option>
+        </select> -->
         <div class="type">
-          교재 유형 선택</br>
+          <span class="textbox">교재 유형 선택</br></span>
           <input type="checkbox" class="type_list" value="손필기"> 손필기</br>
           <input type="checkbox" class="type_list" value="워크북"> 워크북</br>
           <input type="checkbox" class="type_list" value="변형문제"> 변형문제</br>
@@ -285,17 +334,40 @@ h1{
       refresh_order();
     }
 
+    // var selected_index = select_obj.selectedIndex;
+    // var selected_value = select_obj.options[selected_index].value;
+    //
+    // //교과서 선택
+    // if(selected_value === "textbook"){
+    //   display_on("textbook");
+    //   display_off("simul");
+    // }
 
+    function add_download_list_dropdown(name){
+      var targetNode = document.getElementById(name);
+      var selected_index = targetNode.selectedIndex;
+      return targetNode.options[selected_index].value;
 
-    function add_download_list(name, newTR, td){
+    }
+    function add_download_list_checkbox(name, newTR, td){
       var check_count = document.getElementsByClassName(name).length;
       for(var i=0; i<check_count; i++){
         if(document.getElementsByClassName(name)[i].checked === true){
           // newTR = document.createElement("tr");
           var tem_td = document.getElementsByClassName(name)[i].value;
+          document.getElementsByClassName(name)[i].checked=false;
           return tem_td;
         }
       }
+
+      // var check_count = document.getElementsByClassName(name).length;
+      // for(var i=0; i<check_count; i++){
+      //   if(document.getElementsByClassName(name)[i].checked === true){
+      //     // newTR = document.createElement("tr");
+      //     var tem_td = document.getElementsByClassName(name)[i].value;
+      //     return tem_td;
+      //   }
+      // }
     }
     var newTR;
     var td="";
@@ -321,31 +393,76 @@ h1{
       index_file++;
     }
 
-    function add_download_textbook(){
-      newTR = document.createElement("tr");
-      td = `${td}${add_download_list("publisher_list", newTR, td)}`;
-      td = `${td}-${add_download_list("textbook_type_list", newTR, td)}`;
-      td = `${td}-${add_download_list("type_list", newTR, td)}`;
-
-      add_download();
-      td="";
-
+    function all_checkbox_off(name){
+      var check_count = document.getElementsByClassName(name).length;
+      for(var i=0; i<check_count; i++){
+        document.getElementsByClassName(name)[i].checked=false;
+      }
     }
+    function all_checkbox_on(name){
+      var check_count = document.getElementsByClassName(name).length;
+      for(var i=0; i<check_count; i++){
+        document.getElementsByClassName(name)[i].checked=true;
+      }
+    }
+    function check_count_list(name){
+      var check_count = document.getElementsByClassName(name).length;
+      var check_count_real = 0;
+      for(var i=0; i<check_count; i++){
+        if(document.getElementsByClassName(name)[i].checked==true)
+          check_count_real++;
+      }
+      return check_count_real;
+    }
+
+    function add_download_textbook(){
+      var check_count = check_count_list("type_list");
+      for(var i=0; i<check_count; i++){
+        newTR = document.createElement("tr");
+        td = `${td}${add_download_list_dropdown("publisher")}`;
+        td = `${td}-${add_download_list_dropdown("textbook_type")}`;
+
+        // td = `${td}${add_download_list("grade", newTR, td)}`;
+        // td = `${td}-${add_download_list("year", newTR, td)}`;
+        // td = `${td}-${add_download_list("month", newTR, td)}`;
+        td = `${td}-${add_download_list_checkbox("type_list", newTR, td)}`;
+        add_download();
+        td="";
+      }
+      all_checkbox_off("type_list");
+    }
+
 
     function add_download_simul(){
+      var check_count = check_count_list("type_list");
+      for(var i=0; i<check_count; i++){
+        newTR = document.createElement("tr");
+        td = `${td}${add_download_list_dropdown("grade")}`;
+        td = `${td}-${add_download_list_dropdown("year")}`;
+        td = `${td}-${add_download_list_dropdown("month")}`;
 
-      newTR = document.createElement("tr");
-      td = `${td}${add_download_list("grade_list", newTR, td)}`;
-      td = `${td}-${add_download_list("year_list", newTR, td)}`;
-      td = `${td}-${add_download_list("month_list", newTR, td)}`;
-      td = `${td}-${add_download_list("type_list", newTR, td)}`;
-
-
-      add_download();
-      td="";
-
+        // td = `${td}${add_download_list("grade", newTR, td)}`;
+        // td = `${td}-${add_download_list("year", newTR, td)}`;
+        // td = `${td}-${add_download_list("month", newTR, td)}`;
+        td = `${td}-${add_download_list_checkbox("type_list", newTR, td)}`;
+        add_download();
+        td="";
+      }
+      // newTR = document.createElement("tr");
+      // td = `${td}${add_download_list_dropdown("grade")}`;
+      // td = `${td}-${add_download_list_dropdown("year")}`;
+      // td = `${td}-${add_download_list_dropdown("month")}`;
+      //
+      // // td = `${td}${add_download_list("grade", newTR, td)}`;
+      // // td = `${td}-${add_download_list("year", newTR, td)}`;
+      // // td = `${td}-${add_download_list("month", newTR, td)}`;
+      // td = `${td}-${add_download_list_checkbox("type_list", newTR, td)}`;
+      // add_download();
+      // td="";
+      all_checkbox_off("type_list");
 
     }
+
   </script>
   </div>
 
