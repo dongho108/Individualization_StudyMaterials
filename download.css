@@ -1,0 +1,137 @@
+.menu{
+  position: relative;
+  right : 3px;
+  top:5px;
+  width:15px;
+}
+h1{
+  text-align: center;
+}
+#textbook{
+  display : none;
+}
+#simul{
+  display : none;
+}
+.divide{
+  float:left;
+  width:70%;
+}
+.result_form{
+  background-color: rgb(230, 230, 230);
+  float:left;
+  text-align: center;
+  width : 200px;
+  padding: 5px 5px 3px 5px;
+}
+.materials{
+  float:left;
+  width: 94px;
+  margin : 0px 20px 10px 10px;
+}
+.grade{
+  float:left;
+  width: 94px;
+  margin-right: 3%;
+}
+.year{
+  float:left;
+  width: 94px;
+  margin-right: 3%;
+}
+.month{
+  float:left;
+  width: 94px;
+  margin-right: 3%;
+}
+.type{
+  float:left;
+  width: 94px;
+}
+.publisher{
+  float:left;
+  width: 94px;
+  margin-right: 3%;
+}
+.textbook_type{
+  float:left;
+  width: 94px;
+  margin-right: 3%;
+}
+.textbox{
+  color : blue;
+}
+.select{
+  float:left;
+  width:100%;
+  text-align: center;
+  padding : 50px 0 0 0;
+}
+.select_btn{
+  padding : 10px 50px 10px 50px;
+
+}
+.download_remove{
+  margin-left: 20%;
+
+}
+.download{
+  float : left;
+  margin-right: 5px;
+}
+.remove{
+  float : left;
+}
+.download_btn{
+  padding : 5px 10px 5px 10px;
+  background-color: #0024FF;
+  border : none;
+  color : white;
+  width : 60px;
+  font-size: 0.7em;
+}
+.remove_btn{
+  padding : 5px 10px 5px 10px;
+  background-color: gray;
+  border : none;
+  color : white;
+  width : 60px;
+  font-size: 0.7em;
+}
+#file_table{
+  margin-top:10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 0.7em;
+}
+@media only all and (max-width : 800px){
+  .divide{
+    width:100%;
+  }
+  .materials{
+    width: 80px;
+  }
+  .grade{
+    width: 80px;
+  }
+  .year{
+    width: 80px;
+  }
+  .month{
+    width: 94px;
+  }
+  .type{
+    width: 94px;
+  }
+  .select{
+    width:100%;
+  }
+  .result_form{
+    position: absolute;
+    margin-top : 122px;
+    width: 200px;
+    margin-left: 70%;
+  }
+}
